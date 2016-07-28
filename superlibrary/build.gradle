@@ -3,6 +3,10 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 version = "1.0.0"
+group = "com.supercwn.superrecycleview"
+
+def siteUrl = 'https://github.com/supercwn/SuperRecycleView'    // project homepage
+def gitUrl = 'https://github.com/supercwn/SuperRecycleView.git' // project git
 
 android {
     compileSdkVersion 24
@@ -28,4 +32,76 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
+}
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name 'a RecyclerView that implements refresh and loadmore featrues,and you can extends SuperBaseAdapter<T>,you can easy cover data'                                   // #CONFIG# // project title
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'supercwn'                                           // #CONFIG# // your user id (you can write your nickname)
+                        name 'weinan.chen'                                       // #CONFIG# // your user name
+                        email '953267615@qq.com'                               // #CONFIG# // your email
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    // archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+boolean isHasFile = false
+if (project.rootProject.file('local.properties') != null){
+    isHasFile = true
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+}
+bintray {
+    user = isHasFile ? properties.getProperty("bintray.user") : System.getenv("bintray.user")
+    key = isHasFile ? properties.getProperty("bintray.apikey") : System.getenv("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "superrecycleview"                                                 // #CONFIG# project name in jcenter
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
 }
