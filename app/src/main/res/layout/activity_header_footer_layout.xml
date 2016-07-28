@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="点击添加头部"
+            android:padding="10dp"
+            android:textColor="@color/colorWrite"
+            android:gravity="center"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/tv_add_headerview"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="点击添加尾部"
+            android:padding="10dp"
+            android:gravity="center"
+            android:id="@+id/tv_add_footerview"/>
+    </LinearLayout>
+
+    <com.superrecycleview.superlibrary.recycleview.SuperRecyclerView
+        android:id="@+id/superrecycleview_header_footer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SuperRecycleView</string>
+
+    <string name="alpha">Alpha</string>
+    <string name="scale">Scale</string>
+    <string name="slide_from_left">Slide from left</string>
+    <string name="slide_from_right">Slide from right</string>
+    <string name="github">GitHub</string>
+    <string name="slide_from_bottom">Slide from bottom</string>
+</resources>
