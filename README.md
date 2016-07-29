@@ -6,7 +6,7 @@
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/change.gif)
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/multitem.gif)
 
-#How to User#
+#How to Use#
 
 gradle
 
