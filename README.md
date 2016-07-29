@@ -1,4 +1,4 @@
-# SuperRecycleView #
+# SuperRecyclerView #
 
 **SuperRecycleView** is a combines XrecycleView and CymChad / BaseRecyclerViewAdapterHelper. If you use SuperRecycleView, you can pullrefresh,load more easier with a reference. More convenient to bind the data.
 
