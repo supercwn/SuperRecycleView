@@ -44,7 +44,7 @@ public class RefreshAndLoadMoreActivity extends AppCompatActivity implements Sup
         superRecyclerView.setLoadingListener(this);//下拉刷新，上拉加载的监听
         superRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);//下拉刷新的样式
         superRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate);//上拉加载的样式
-        superRecyclerView.setArrowImageView(R.mipmap.iconfont_downgrey);
+        superRecyclerView.setArrowImageView(R.mipmap.iconfont_downgrey);//设置下拉箭头
     }
     private List<String> initData(int size) {
         dataList.clear();

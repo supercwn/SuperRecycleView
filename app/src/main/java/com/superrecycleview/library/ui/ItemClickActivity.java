@@ -48,44 +48,44 @@ public class ItemClickActivity extends Activity {
         mAdapter = new ItemClickAdapter(this,dataList);
 
         /**
-         * 添加item的点击事件
+         * add item click event
          */
         mAdapter.setOnItemClickListener(new SuperBaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, Object item, int position) {
-                Toast.makeText(ItemClickActivity.this,"你长按了item"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(ItemClickActivity.this,"you click item"+position,Toast.LENGTH_SHORT).show();
             }
         });
 
         /**
-         * 添加item的长按事件
+         * add item long click event
          */
         mAdapter.setOnItemLongClickListener(new SuperBaseAdapter.OnItemLongClickListener() {
             @Override
             public void onItemLongClick(View view, Object item, int position) {
-                Toast.makeText(ItemClickActivity.this,"你长按了item"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(ItemClickActivity.this,"you long click item"+position,Toast.LENGTH_SHORT).show();
             }
         });
 
         /**
-         * 添加子控件的点击事件
+         * add item child click event
          */
         mAdapter.setOnItemChildClickListener(new SuperBaseAdapter.OnRecyclerViewItemChildClickListener() {
             @Override
             public void onItemChildClick(SuperBaseAdapter adapter, View view, int position) {
                 if(view.getId() == R.id.name_tv){
-                    Toast.makeText(ItemClickActivity.this,"你点击了"+dataList.get(position).getName(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ItemClickActivity.this,"you item child click"+dataList.get(position).getName(),Toast.LENGTH_SHORT).show();
                 }
             }
         });
         /**
-         * 添加子控件的长按事件
+         * add item child long click event
          */
         mAdapter.setOnItemChildLongClickListener(new SuperBaseAdapter.OnRecyclerViewItemChildLongClickListener() {
             @Override
             public boolean onItemChildLongClick(SuperBaseAdapter adapter, View view, int position) {
                 if(view.getId() == R.id.image_iv){
-                    Toast.makeText(ItemClickActivity.this,"你长按了图片控件",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ItemClickActivity.this,"you item child long click",Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -73,13 +72,8 @@ public class GradualChangeActivity extends Activity implements SuperRecyclerView
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (isScrollIdle && adViewTopSpace < 0) return;
-                Log.d("asd","newState3"+mAdapter.getHeaderLayout().getHeight());
-                Log.d("asd","newState4"+mAdapter.getHeaderLayout().getTop());
-//                Log.d("asd","newState1"+dx+"newState2"+dy);
                 adViewTopSpace = DensityUtil.px2dip(GradualChangeActivity.this, mAdapter.getHeaderLayout().getTop());
                 adViewHeight = DensityUtil.px2dip(GradualChangeActivity.this, mAdapter.getHeaderLayout().getHeight());
-                Log.d("asd",adViewTopSpace+"top");
-                Log.d("asd",adViewHeight+"hight");
                 if(-adViewTopSpace<=50){
                     tv_title.setVisibility(View.GONE);
                 } else {
