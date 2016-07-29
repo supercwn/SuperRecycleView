@@ -62,7 +62,7 @@ public class SuperRecyclerView extends RecyclerView {
 
 
 
-    //判断是否是XRecyclerView保留的itemViewType
+    //判断是否是SuperRecyclerView保留的itemViewType
     private boolean isReservedItemViewType(int itemViewType) {
         if(itemViewType == TYPE_REFRESH_HEADER || itemViewType == TYPE_LOADMORE_FOOTER) {
             return true;

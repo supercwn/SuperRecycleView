@@ -44,8 +44,7 @@ import com.superrecycleview.superlibrary.recycleview.progressindicator.indicator
 
 
 /**
- * Created by super南仔 on 2016/07/28
- *
+ * Created by Jack on 2015/10/19.
  .BallPulse,
  .BallGridPulse,
  .BallClipRotate,

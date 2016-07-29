@@ -3,9 +3,7 @@ package com.superrecycleview.superlibrary.recycleview;
 import android.support.v7.widget.RecyclerView;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by Jack on 2015/10/19.
  */
 public interface ItemTouchHelperAdapter {
 

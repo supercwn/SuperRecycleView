@@ -11,9 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by Jack on 2015/10/19.
  */
 public class JellyView extends View implements BaseRefreshHeader{
     Path path;

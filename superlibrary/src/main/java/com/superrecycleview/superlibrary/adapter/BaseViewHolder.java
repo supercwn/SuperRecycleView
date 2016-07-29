@@ -25,7 +25,6 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         mContext = context;
     }
 
-    @SuppressWarnings("unchecked")
     public <TView extends View> TView getView(int id) {
         View view = mViews.get(id);
         if (view == null) {

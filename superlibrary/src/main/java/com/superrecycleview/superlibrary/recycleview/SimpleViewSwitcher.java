@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by Jack on 2015/10/19.
  */
 public class SimpleViewSwitcher extends ViewGroup {
 
