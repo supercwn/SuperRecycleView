@@ -48,9 +48,7 @@ public class SwipeMenuAdapter extends SuperBaseAdapter<String>{
                 }
             });
         }
-
     }
-
     @Override
     protected int getItemViewLayoutId(int position, String item) {
         if(position%3==0){

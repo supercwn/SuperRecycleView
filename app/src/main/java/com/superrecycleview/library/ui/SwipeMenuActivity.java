@@ -45,7 +45,7 @@ public class SwipeMenuActivity extends Activity implements SuperRecyclerView.Loa
         superSwipeMenuRecyclerView.setLoadingMoreEnabled(true);
         superSwipeMenuRecyclerView.setLoadingListener(this);
         superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);//左滑（默认）
-//        superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);//右滑
+        // superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);//右滑
     }
     private void initAdapter(){
         swipeMenuAdapter = new SwipeMenuAdapter(this,dataList);
