@@ -205,6 +205,77 @@ and you Adapter should do
 	        return R.layout.adapter_item_click_layout;
 	    }
 	}
+#SwipeMenu
+
+if you need add swipemenu you can
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.superrecycleview.superlibrary.recycleview.swipemenu.SuperSwipeMenuRecyclerView
+        android:id="@+id/super_swipemenu_recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+	</LinearLayout>
+
+and than
+
+	superSwipeMenuRecyclerView = (SuperSwipeMenuRecyclerView) findViewById(R.id.super_swipemenu_recycle_view);
+    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+    superSwipeMenuRecyclerView.setLayoutManager(layoutManager);
+    superSwipeMenuRecyclerView.setRefreshEnabled(true);
+    superSwipeMenuRecyclerView.setLoadingMoreEnabled(true);
+    superSwipeMenuRecyclerView.setLoadingListener(this);
+    superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);//左滑（默认）
+    // superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);//右滑
+
+and than 
+	
+	public class SwipeMenuAdapter extends SuperBaseAdapter<String>{
+
+    public SwipeMenuAdapter(Context context, List<String> data) {
+        super(context, data);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder holder, String item, int position) {
+        final SuperSwipeMenuLayout superSwipeMenuLayout = (SuperSwipeMenuLayout) holder.itemView;
+        superSwipeMenuLayout.setSwipeEnable(true);//设置是否可以侧滑
+        if(position%3==0){
+            holder.setText(R.id.name_tv,item)
+                    .setOnClickListener(R.id.btFavorite,new OnItemChildClickListener())
+                    .setOnClickListener(R.id.btGood,new OnItemChildClickListener())
+                    .setOnClickListener(R.id.image_iv,new OnItemChildClickListener());
+        } else {
+            holder.setText(R.id.name_tv,item).setOnClickListener(R.id.btOpen,new OnItemChildClickListener())
+                    .setOnClickListener(R.id.btDelete,new OnItemChildClickListener())
+                    .setOnClickListener(R.id.image_iv,new OnItemChildClickListener());
+            /**
+             * 设置可以非滑动触发的开启菜单
+             */
+            holder.getView(R.id.image_iv).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(superSwipeMenuLayout.isOpen()) {
+                        superSwipeMenuLayout.closeMenu();
+                    } else {
+                        superSwipeMenuLayout.openMenu();
+                    }
+                }
+            });
+        }
+    }
+    @Override
+    protected int getItemViewLayoutId(int position, String item) {
+        if(position%3==0){
+            return R.layout.adapter_swipemenu1_layout;
+        } else {
+            return R.layout.adapter_swipemenu_layout;
+        }
+    }
+	}
 
 #Thanks
 
