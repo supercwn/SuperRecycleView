@@ -5,6 +5,7 @@
 # Screenshots #
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/change.gif)
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/multitem.gif)
+![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/swipemenu.gif)
 
 #How to Use#
 
