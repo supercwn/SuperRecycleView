@@ -8,10 +8,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.superrecycleview.library.R;
 import com.superrecycleview.library.adapter.AnimationAdapter;
 import com.superrecycleview.superlibrary.adapter.AnimationType;
 import com.superrecycleview.superlibrary.recycleview.SuperRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +45,8 @@ public class AnimationActivity extends AppCompatActivity {
         superRecyclerView.setLayoutManager(layoutManager);
         superRecyclerView.setRefreshEnabled(false);
         superRecyclerView.setLoadingMoreEnabled(false);
+        View emptyView = findViewById(R.id.tv_empty_view);
+        superRecyclerView.setEmptyView(emptyView);
     }
 
     private void initData() {

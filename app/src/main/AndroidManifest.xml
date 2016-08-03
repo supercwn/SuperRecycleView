@@ -35,6 +35,9 @@
         <activity android:name=".ui.ItemClickActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.SwipeMenuActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

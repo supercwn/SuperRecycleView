@@ -13,6 +13,7 @@ import com.superrecycleview.library.ui.HeaderAndFooterActivity;
 import com.superrecycleview.library.ui.ItemClickActivity;
 import com.superrecycleview.library.ui.MultiItemActivity;
 import com.superrecycleview.library.ui.RefreshAndLoadMoreActivity;
+import com.superrecycleview.library.ui.SwipeMenuActivity;
 import com.superrecycleview.superlibrary.adapter.SuperBaseAdapter;
 import com.superrecycleview.superlibrary.recycleview.SuperRecyclerView;
 
@@ -26,8 +27,8 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity implements SuperBaseAdapter.OnItemClickListener {
 
-    private static final String[] titles = {"AnimationActivity","HeaderViewAndFooterView","RefreshAndLoadMoreActivity","Gradual change","MultiItemActivity","ItemClickActivity"};
-    private static final Class<?>[] ACTIVITY = {AnimationActivity.class, HeaderAndFooterActivity.class, RefreshAndLoadMoreActivity.class, GradualChangeActivity.class, MultiItemActivity.class,ItemClickActivity.class};
+    private static final String[] titles = {"AnimationActivity","HeaderViewAndFooterView","RefreshAndLoadMoreActivity","Gradual change","MultiItemActivity","ItemClickActivity","SwipeMenuActivity"};
+    private static final Class<?>[] ACTIVITY = {AnimationActivity.class, HeaderAndFooterActivity.class, RefreshAndLoadMoreActivity.class, GradualChangeActivity.class, MultiItemActivity.class,ItemClickActivity.class, SwipeMenuActivity.class};
     private List<String> dataList = new ArrayList<>();
 
     private SuperRecyclerView superRecyclerView;
