@@ -59,7 +59,7 @@ public class GradualChangeActivity extends Activity implements SuperRecyclerView
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superRecyclerView.setLayoutManager(layoutManager);
         superRecyclerView.setRefreshEnabled(true);
-        superRecyclerView.setLoadingMoreEnabled(true);
+        superRecyclerView.setLoadMoreEnabled(true);
         superRecyclerView.setLoadingListener(this);
         superRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

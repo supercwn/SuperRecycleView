@@ -51,7 +51,7 @@ public class HeaderAndFooterActivity extends Activity implements View.OnClickLis
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superRecyclerView.setLayoutManager(layoutManager);
         superRecyclerView.setRefreshEnabled(true);
-        superRecyclerView.setLoadingMoreEnabled(true);
+        superRecyclerView.setLoadMoreEnabled(true);
         superRecyclerView.setLoadingListener(this);
 
         headerView = getLayoutInflater().inflate(R.layout.view_header_layout, (ViewGroup) superRecyclerView.getParent(), false);

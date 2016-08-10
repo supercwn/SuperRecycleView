@@ -44,7 +44,7 @@ public class AnimationActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superRecyclerView.setLayoutManager(layoutManager);
         superRecyclerView.setRefreshEnabled(false);
-        superRecyclerView.setLoadingMoreEnabled(false);
+        superRecyclerView.setLoadMoreEnabled(false);
         View emptyView = findViewById(R.id.tv_empty_view);
         superRecyclerView.setEmptyView(emptyView);
     }

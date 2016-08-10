@@ -40,7 +40,7 @@ public class ItemClickActivity extends Activity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superRecyclerView.setLayoutManager(layoutManager);
         superRecyclerView.setRefreshEnabled(false);
-        superRecyclerView.setLoadingMoreEnabled(false);
+        superRecyclerView.setLoadMoreEnabled(false);
     }
 
     private void initAdapter(){

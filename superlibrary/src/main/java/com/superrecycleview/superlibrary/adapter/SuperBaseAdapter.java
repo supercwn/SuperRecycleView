@@ -28,15 +28,15 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
     private static final String TAG = "SuperBaseAdapter";
 
-    private static class VIEW_TYPE {
-        static final int HEADER = 0x0010;
-        static final int FOOTER = 0x0011;
+    public static class VIEW_TYPE {
+        public static final int HEADER = 0x0010;
+        public static final int FOOTER = 0x0011;
     }
 
     /**
      * Base config
      */
-    private List<T> mData;
+    public List<T> mData;
     private Context mContext;
     private LayoutInflater mInflater;
 
@@ -364,7 +364,7 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         mFooterLayout = null;
     }
 
-    private int getHeaderViewCount() {
+    public int getHeaderViewCount() {
         return null == mHeaderLayout ? 0 : 1;
     }
 

@@ -38,6 +38,9 @@
         <activity android:name=".ui.SwipeMenuActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.DragActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.0.0"
+version = "1.1.0"
 group = "com.supercwn.superrecycleview"
 
 def siteUrl = 'https://github.com/supercwn/SuperRecycleView'    // project homepage

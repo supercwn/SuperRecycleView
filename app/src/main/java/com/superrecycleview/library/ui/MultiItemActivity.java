@@ -40,7 +40,7 @@ public class MultiItemActivity extends Activity implements SuperRecyclerView.Loa
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superRecyclerView.setLayoutManager(layoutManager);
         superRecyclerView.setRefreshEnabled(true);
-        superRecyclerView.setLoadingMoreEnabled(true);
+        superRecyclerView.setLoadMoreEnabled(true);
         superRecyclerView.setLoadingListener(this);
     }
 

@@ -108,7 +108,7 @@ public class SuperRecyclerView extends RecyclerView {
         refreshEnabled = enabled;
     }
 
-    public void setLoadingMoreEnabled(boolean enabled) {
+    public void setLoadMoreEnabled(boolean enabled) {
         loadingMoreEnabled = enabled;
         if (!enabled) {
             if (mLoadMoreFootView instanceof LoadingMoreFooter) {

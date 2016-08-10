@@ -40,7 +40,7 @@ public class RefreshAndLoadMoreActivity extends AppCompatActivity implements Sup
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superRecyclerView.setLayoutManager(layoutManager);
         superRecyclerView.setRefreshEnabled(true);//可以定制是否开启下拉刷新
-        superRecyclerView.setLoadingMoreEnabled(true);//可以定制是否开启加载更多
+        superRecyclerView.setLoadMoreEnabled(true);//可以定制是否开启加载更多
         superRecyclerView.setLoadingListener(this);//下拉刷新，上拉加载的监听
         superRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);//下拉刷新的样式
         superRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate);//上拉加载的样式
