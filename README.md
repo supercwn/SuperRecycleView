@@ -12,7 +12,7 @@
 
 gradle
 
-	compile 'com.supercwn.superrecycleview:superlibrary:1.1.0'
+	compile 'com.supercwn.superrecycleview:superlibrary:1.2.0'
 
 #RefreshAndLoadMore#
 
