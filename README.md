@@ -5,12 +5,13 @@
 # Screenshots #
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/change.gif)
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/multitem.gif)
+![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/swipemenu.gif)
 
 #How to Use#
 
 gradle
 
-	compile 'com.supercwn.superrecycleview:superlibrary:1.0.0'
+	compile 'com.supercwn.superrecycleview:superlibrary:1.1.0'
 
 #RefreshAndLoadMore#
 
