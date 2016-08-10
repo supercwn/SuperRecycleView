@@ -6,6 +6,7 @@
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/change.gif)
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/multitem.gif)
 ![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/swipemenu.gif)
+![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/drag.gif)
 
 #How to Use#
 
@@ -277,6 +278,60 @@ and than
         }
     }
 	}
+	
+#SwipeMenu
+if you need drag item,you can
+	
+	public class DragAdapter extends SuperBaseDragAdapter<String> {
+    public DragAdapter(Context context, List<String> data) {
+        super(context, data);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder holder, String item, int position) {
+        holder.setText(R.id.tv,item);
+    }
+
+    @Override
+    protected int getItemViewLayoutId(int position, String item) {
+        return R.layout.adapter_draggable_layout;
+    }
+	}
+
+and than
+	OnItemDragListener listener = new OnItemDragListener() {
+            @Override
+            public void onItemDragStart(RecyclerView.ViewHolder viewHolder, int pos) {
+                mRecyclerView.setRefreshEnabled(false);//在开始的时候需要禁止下拉刷新，不然在下滑动的时候会与下拉刷新冲突
+                BaseViewHolder holder = ((BaseViewHolder)viewHolder);
+                holder.setTextColor(R.id.tv, Color.WHITE);
+                ((CardView)viewHolder.itemView).setCardBackgroundColor(ContextCompat.getColor(DragActivity.this, R.color.colorAccent));
+            }
+
+            @Override
+            public void onItemDragMoving(RecyclerView.ViewHolder source, int from, RecyclerView.ViewHolder target, int to) {
+            }
+
+            @Override
+            public void onItemDragEnd(RecyclerView.ViewHolder viewHolder, int pos) {
+                mRecyclerView.setRefreshEnabled(true);//在结束之后需要开启下拉刷新
+                BaseViewHolder holder = ((BaseViewHolder)viewHolder);
+                holder.setTextColor(R.id.tv, Color.BLACK);
+                ((CardView)viewHolder.itemView).setCardBackgroundColor(Color.WHITE);
+            }
+        };
+        mAdapter = new DragAdapter(this,mData);
+        mItemDragAndSwipeCallback = new ItemDragCallback(mAdapter);
+        mItemTouchHelper = new ItemTouchHelper(mItemDragAndSwipeCallback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+        mItemDragAndSwipeCallback.setDragMoveFlags(ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.UP | ItemTouchHelper.DOWN);
+        mAdapter.enableDragItem(mItemTouchHelper);
+        mAdapter.setOnItemDragListener(listener);
+
+Presentation charts
+
+![change](https://github.com/supercwn/SuperRecycleView/blob/master/gif/drag.gif)
+
 
 #Thanks
 
