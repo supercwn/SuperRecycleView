@@ -15,7 +15,11 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 
 import com.superrecycleview.superlibrary.R;
-
+/**
+ * Created by super南仔 on 07/28/16.
+ * blog: http://supercwn.github.io/
+ * GitHub: https://github.com/supercwn
+ */
 public class SuperSwipeMenuLayout extends FrameLayout {
 
 	private static final int STATE_CLOSE = 0;

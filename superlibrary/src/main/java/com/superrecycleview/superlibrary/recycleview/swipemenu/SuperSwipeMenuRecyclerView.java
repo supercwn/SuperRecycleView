@@ -10,7 +10,11 @@ import android.view.ViewConfiguration;
 import android.view.animation.Interpolator;
 
 import com.superrecycleview.superlibrary.recycleview.SuperRecyclerView;
-
+/**
+ * Created by super南仔 on 07/28/16.
+ * blog: http://supercwn.github.io/
+ * GitHub: https://github.com/supercwn
+ */
 public class SuperSwipeMenuRecyclerView extends SuperRecyclerView {
 
 	public static final int TOUCH_STATE_NONE = 0;

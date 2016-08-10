@@ -6,9 +6,10 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import com.superrecycleview.superlibrary.R;
 import com.superrecycleview.superlibrary.adapter.SuperBaseAdapter;
 import com.superrecycleview.superlibrary.adapter.SuperBaseDragAdapter;
-
 /**
- * Created by luoxw on 2016/6/20.
+ * Created by super南仔 on 07/28/16.
+ * blog: http://supercwn.github.io/
+ * GitHub: https://github.com/supercwn
  */
 public class ItemDragCallback extends ItemTouchHelper.Callback {
 

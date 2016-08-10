@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016-08-08.
+ * Created by super南仔 on 07/28/16.
+ * blog: http://supercwn.github.io/
+ * GitHub: https://github.com/supercwn
  */
 public class DragActivity extends Activity implements SuperRecyclerView.LoadingListener, SuperBaseAdapter.OnItemClickListener {
 

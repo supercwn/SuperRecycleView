@@ -3,7 +3,9 @@ package com.superrecycleview.superlibrary.callback;
 import android.support.v7.widget.RecyclerView;
 
 /**
- * Created by luoxw on 2016/6/20.
+ * Created by super南仔 on 07/28/16.
+ * blog: http://supercwn.github.io/
+ * GitHub: https://github.com/supercwn
  */
 public interface OnItemDragListener {
     void onItemDragStart(RecyclerView.ViewHolder viewHolder, int pos);
