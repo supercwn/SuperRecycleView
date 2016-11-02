@@ -2,15 +2,13 @@ package com.superrecycleview.superlibrary.adapter;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -394,34 +392,33 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         Animator getAnimator(View itemView);
     }
 
+    private SpanSizeLookup mSpanSizeLookup;
+
+    public interface SpanSizeLookup {
+        int getSpanSize(GridLayoutManager gridLayoutManager, int position);
+    }
     /**
-     * This is parallax header view wrapper class ,it aim to clip layout height on Y.
+     * @param spanSizeLookup instance to be used to query number of spans occupied by each item
      */
-    static class CustomRelativeWrapper extends RelativeLayout {
-
-        private int mOffset;
-        private boolean mShouldClip;
-
-        public CustomRelativeWrapper(Context context) {
-            super(context);
-        }
-
-        public CustomRelativeWrapper(Context context, boolean shouldClick) {
-            super(context);
-            mShouldClip = shouldClick;
-        }
-
-        @Override
-        protected void dispatchDraw(Canvas canvas) {
-            if (mShouldClip) {
-                canvas.clipRect(new Rect(getLeft(), getTop(), getRight(), getBottom() + mOffset));
-            }
-            super.dispatchDraw(canvas);
-        }
-
-        public void setClipY(int offset) {
-            mOffset = offset;
-            invalidate();
+    public void setSpanSizeLookup(SpanSizeLookup spanSizeLookup) {
+        this.mSpanSizeLookup = spanSizeLookup;
+    }
+    @Override
+    public void onAttachedToRecyclerView(final RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if (manager instanceof GridLayoutManager) {
+            final GridLayoutManager gridManager = ((GridLayoutManager) manager);
+            gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    int type = getItemViewType(position-1);
+                    if (mSpanSizeLookup == null)
+                        return (type == VIEW_TYPE.HEADER || type == VIEW_TYPE.FOOTER) ? gridManager.getSpanCount() : 1;
+                    else
+                        return (type == VIEW_TYPE.HEADER || type == VIEW_TYPE.FOOTER) ? gridManager.getSpanCount() : mSpanSizeLookup.getSpanSize(gridManager, position - getHeaderViewCount());
+                }
+            });
         }
     }
 }
