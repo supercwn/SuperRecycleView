@@ -10,7 +10,7 @@
 
 #How to Use#
 
-gradle
+gradle  由于自身代理过期，所以一直连不上，有个bug会有该1.2.0版本没有修复
 
 	compile 'com.supercwn.superrecycleview:superlibrary:1.2.0'
 
