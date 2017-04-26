@@ -1,3 +1,4 @@
+
 package com.superrecycleview.superlibrary.adapter;
 
 import android.content.Context;
@@ -11,9 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
 public class BaseViewHolder extends RecyclerView.ViewHolder {
     private final SparseArray<View> mViews;
@@ -109,7 +109,8 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public BaseViewHolder setOnClickListener(int viewId, SuperBaseAdapter.OnItemChildClickListener listener) {
+    public BaseViewHolder setOnClickListener(int viewId,
+            SuperBaseAdapter.OnItemChildClickListener listener) {
         View view = getView(viewId);
         listener.mViewHolder = this;
         view.setOnClickListener(listener);
@@ -118,11 +119,13 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     /**
      * Sets the on longClick listener of the view.
+     * 
      * @param viewId
      * @param listener
      * @return
      */
-    public BaseViewHolder setOnLongClickListener(int viewId, SuperBaseAdapter.OnItemChildLongClickListener listener) {
+    public BaseViewHolder setOnLongClickListener(int viewId,
+            SuperBaseAdapter.OnItemChildLongClickListener listener) {
         View view = getView(viewId);
         listener.mViewHolder = this;
         view.setOnLongClickListener(listener);

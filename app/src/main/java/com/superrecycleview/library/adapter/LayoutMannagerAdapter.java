@@ -13,9 +13,9 @@ import java.util.List;
  * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
  * https://github.com/supercwn
  */
-public class MainAdapter extends SuperBaseAdapter<String> {
+public class LayoutMannagerAdapter extends SuperBaseAdapter<String> {
 
-    public MainAdapter(Context context, List<String> data) {
+    public LayoutMannagerAdapter(Context context, List<String> data) {
         super(context, data);
     }
 
@@ -26,6 +26,6 @@ public class MainAdapter extends SuperBaseAdapter<String> {
 
     @Override
     protected int getItemViewLayoutId(int position, String item) {
-        return R.layout.adapter_main_layout;
+        return R.layout.adapter_manager_layout;
     }
 }

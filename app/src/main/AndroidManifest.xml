@@ -20,27 +20,37 @@
             android:name=".ui.AnimationActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.HeaderAndFooterActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.HeaderAndFooterActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.RefreshAndLoadMoreActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.RefreshAndLoadMoreActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.GradualChangeActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.GradualChangeActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.MultiItemActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.MultiItemActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.ItemClickActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.ItemClickActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.SwipeMenuActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.SwipeMenuActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.DragActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".ui.DragActivity"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name=".ui.LayoutManagerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

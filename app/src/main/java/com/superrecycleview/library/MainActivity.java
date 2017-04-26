@@ -1,3 +1,4 @@
+
 package com.superrecycleview.library;
 
 import android.content.Intent;
@@ -12,6 +13,7 @@ import com.superrecycleview.library.ui.DragActivity;
 import com.superrecycleview.library.ui.GradualChangeActivity;
 import com.superrecycleview.library.ui.HeaderAndFooterActivity;
 import com.superrecycleview.library.ui.ItemClickActivity;
+import com.superrecycleview.library.ui.LayoutManagerActivity;
 import com.superrecycleview.library.ui.MultiItemActivity;
 import com.superrecycleview.library.ui.RefreshAndLoadMoreActivity;
 import com.superrecycleview.library.ui.SwipeMenuActivity;
@@ -22,14 +24,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
-public class MainActivity extends AppCompatActivity implements SuperBaseAdapter.OnItemClickListener {
+public class MainActivity extends AppCompatActivity
+        implements SuperBaseAdapter.OnItemClickListener {
 
-    private static final String[] titles = {"AnimationActivity","HeaderViewAndFooterView","RefreshAndLoadMoreActivity","Gradual change","MultiItemActivity","ItemClickActivity","SwipeMenuActivity","DragActivity"};
-    private static final Class<?>[] ACTIVITY = {AnimationActivity.class, HeaderAndFooterActivity.class, RefreshAndLoadMoreActivity.class, GradualChangeActivity.class, MultiItemActivity.class,ItemClickActivity.class, SwipeMenuActivity.class, DragActivity.class};
+    private static final String[] titles = {
+            "AnimationActivity", "HeaderViewAndFooterView", "RefreshAndLoadMoreActivity",
+            "Gradual change", "MultiItemActivity", "ItemClickActivity", "SwipeMenuActivity",
+            "DragActivity", "LayoutManagerActivity"
+    };
+    private static final Class<?>[] ACTIVITY = {
+            AnimationActivity.class, HeaderAndFooterActivity.class,
+            RefreshAndLoadMoreActivity.class, GradualChangeActivity.class, MultiItemActivity.class,
+            ItemClickActivity.class, SwipeMenuActivity.class, DragActivity.class,
+            LayoutManagerActivity.class
+    };
     private List<String> dataList = new ArrayList<>();
 
     private SuperRecyclerView superRecyclerView;
@@ -45,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements SuperBaseAdapter.
         initAdapter();
     }
 
-    private void initView(){
+    private void initView() {
         superRecyclerView = (SuperRecyclerView) findViewById(R.id.super_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -54,21 +65,21 @@ public class MainActivity extends AppCompatActivity implements SuperBaseAdapter.
         superRecyclerView.setLoadMoreEnabled(false);
     }
 
-    private void initAdapter(){
-        mAdapter = new MainAdapter(this,dataList);
+    private void initAdapter() {
+        mAdapter = new MainAdapter(this, dataList);
         mAdapter.setOnItemClickListener(this);
         superRecyclerView.setAdapter(mAdapter);
     }
 
-    private void initDatas(){
-        for (int i = 0 ; i< titles.length;i++){
+    private void initDatas() {
+        for (int i = 0; i < titles.length; i++) {
             dataList.add(titles[i]);
         }
     }
 
     @Override
     public void onItemClick(View view, Object item, int position) {
-        Intent intent = new Intent(this,ACTIVITY[position]);
+        Intent intent = new Intent(this, ACTIVITY[position]);
         startActivity(intent);
     }
 }

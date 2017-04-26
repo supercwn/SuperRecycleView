@@ -10,7 +10,7 @@ def gitUrl = 'https://github.com/supercwn/SuperRecycleView.git' // project git
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 14
@@ -40,7 +40,8 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'a RecyclerView that implements refresh and loadmore featrues,and you can extends SuperBaseAdapter<T>,you can easy cover data'                                   // #CONFIG# // project title
+                name 'a RecyclerView that implements refresh and loadmore featrues,and you can extends SuperBaseAdapter<T>,you can easy cover data'
+                // #CONFIG# // project title
                 url siteUrl
                 // Set your license
                 licenses {
@@ -51,9 +52,12 @@ install {
                 }
                 developers {
                     developer {
-                        id 'supercwn'                                           // #CONFIG# // your user id (you can write your nickname)
-                        name 'weinan.chen'                                       // #CONFIG# // your user name
-                        email '953267615@qq.com'                               // #CONFIG# // your email
+                        id 'supercwn'
+                        // #CONFIG# // your user id (you can write your nickname)
+                        name 'weinan.chen'
+                        // #CONFIG# // your user name
+                        email '953267615@qq.com'
+                        // #CONFIG# // your email
                     }
                 }
                 scm {
@@ -88,7 +92,7 @@ artifacts {
 
 Properties properties = new Properties()
 boolean isHasFile = false
-if (project.rootProject.file('local.properties') != null){
+if (project.rootProject.file('local.properties') != null) {
     isHasFile = true
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
 }
@@ -98,7 +102,8 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "superrecycleview"                                                 // #CONFIG# project name in jcenter
+        name = "superrecycleview"
+        // #CONFIG# project name in jcenter
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]

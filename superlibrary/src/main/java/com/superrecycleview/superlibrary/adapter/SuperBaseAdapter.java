@@ -1,9 +1,14 @@
+
 package com.superrecycleview.superlibrary.adapter;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 import android.animation.Animator;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
 public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
     private static final String TAG = "SuperBaseAdapter";
@@ -86,10 +87,10 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BaseViewHolder baseViewHolder;
         switch (viewType) {
-            case VIEW_TYPE.HEADER://header
+            case VIEW_TYPE.HEADER:// header
                 baseViewHolder = new BaseViewHolder(mHeaderLayout, mContext);
                 break;
-            case VIEW_TYPE.FOOTER://footer
+            case VIEW_TYPE.FOOTER:// footer
                 baseViewHolder = new BaseViewHolder(mFooterLayout, mContext);
                 break;
             default:
@@ -154,7 +155,9 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     }
 
     /**
-     * init the baseViewHolder to register mOnItemClickListener and mOnItemLongClickListener
+     * init the baseViewHolder to register mOnItemClickListener and
+     * mOnItemLongClickListener
+     * 
      * @param holder
      */
     protected final void initItemClickListener(final BaseViewHolder holder) {
@@ -162,7 +165,7 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final int position = holder.getAdapterPosition() - getHeaderViewCount()- 1;
+                    final int position = holder.getAdapterPosition() - getHeaderViewCount() - 1;
                     mOnItemClickListener.onItemClick(view, mData.get(position), position);
                 }
             });
@@ -196,7 +199,6 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         return mData.size() + getHeaderViewCount() + getFooterViewCount();
     }
 
-
     /**
      * Listener api
      */
@@ -210,12 +212,12 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
 
     /**
      * Register a callback to be invoked when childView in this AdapterView has
-     * been clicked and held
-     * {@link OnRecyclerViewItemChildClickListener}
+     * been clicked and held {@link OnRecyclerViewItemChildClickListener}
      *
      * @param childClickListener The callback that will run
      */
-    public void setOnItemChildClickListener(OnRecyclerViewItemChildClickListener childClickListener) {
+    public void setOnItemChildClickListener(
+            OnRecyclerViewItemChildClickListener childClickListener) {
         this.mChildClickListener = childClickListener;
     }
 
@@ -225,7 +227,8 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         @Override
         public void onClick(View v) {
             if (mChildClickListener != null)
-                mChildClickListener.onItemChildClick(SuperBaseAdapter.this, v, mViewHolder.getLayoutPosition() - getHeaderViewCount() - 1);
+                mChildClickListener.onItemChildClick(SuperBaseAdapter.this, v,
+                        mViewHolder.getLayoutPosition() - getHeaderViewCount() - 1);
         }
     }
 
@@ -236,7 +239,8 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
      *
      * @param childLongClickListener The callback that will run
      */
-    public void setOnItemChildLongClickListener(OnRecyclerViewItemChildLongClickListener childLongClickListener) {
+    public void setOnItemChildLongClickListener(
+            OnRecyclerViewItemChildLongClickListener childLongClickListener) {
         this.mChildLongClickListener = childLongClickListener;
     }
 
@@ -246,12 +250,12 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         @Override
         public boolean onLongClick(View v) {
             if (mChildLongClickListener != null) {
-                return mChildLongClickListener.onItemChildLongClick(SuperBaseAdapter.this, v, mViewHolder.getLayoutPosition() - getHeaderViewCount() - 1);
+                return mChildLongClickListener.onItemChildLongClick(SuperBaseAdapter.this, v,
+                        mViewHolder.getLayoutPosition() - getHeaderViewCount() - 1);
             }
             return false;
         }
     }
-
 
     /**
      * Animation api
@@ -276,7 +280,6 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         mCustomAnimator = customAnimator;
     }
 
-
     /**
      * Header and footer api
      */
@@ -297,7 +300,8 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
             if (mCopyHeaderLayout == null) {
                 mHeaderLayout = new LinearLayout(header.getContext());
                 mHeaderLayout.setOrientation(LinearLayout.VERTICAL);
-                mHeaderLayout.setLayoutParams(new RecyclerView.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+                mHeaderLayout
+                        .setLayoutParams(new RecyclerView.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
                 mCopyHeaderLayout = mHeaderLayout;
             } else {
                 mHeaderLayout = mCopyHeaderLayout;
@@ -317,7 +321,8 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
             if (mCopyFooterLayout == null) {
                 mFooterLayout = new LinearLayout(footer.getContext());
                 mFooterLayout.setOrientation(LinearLayout.VERTICAL);
-                mFooterLayout.setLayoutParams(new RecyclerView.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+                mFooterLayout
+                        .setLayoutParams(new RecyclerView.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
                 mCopyFooterLayout = mFooterLayout;
             } else {
                 mFooterLayout = mCopyFooterLayout;
@@ -329,7 +334,8 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     }
 
     public void removeHeaderView(View header) {
-        if (mHeaderLayout == null) return;
+        if (mHeaderLayout == null)
+            return;
 
         mHeaderLayout.removeView(header);
         if (mHeaderLayout.getChildCount() == 0) {
@@ -339,7 +345,8 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     }
 
     public void removeFooterView(View footer) {
-        if (mFooterLayout == null) return;
+        if (mFooterLayout == null)
+            return;
 
         mFooterLayout.removeView(footer);
         if (mFooterLayout.getChildCount() == 0) {
@@ -349,14 +356,16 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     }
 
     public void removeAllHeaderView() {
-        if (mHeaderLayout == null) return;
+        if (mHeaderLayout == null)
+            return;
 
         mHeaderLayout.removeAllViews();
         mHeaderLayout = null;
     }
 
     public void removeAllFooterView() {
-        if (mFooterLayout == null) return;
+        if (mFooterLayout == null)
+            return;
 
         mFooterLayout.removeAllViews();
         mFooterLayout = null;
@@ -376,6 +385,7 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     public interface OnItemClickListener<T> {
         void onItemClick(View view, T item, int position);
     }
+
     public interface OnItemLongClickListener<T> {
         void onItemLongClick(View view, T item, int position);
     }
@@ -397,12 +407,16 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     public interface SpanSizeLookup {
         int getSpanSize(GridLayoutManager gridLayoutManager, int position);
     }
+
     /**
-     * @param spanSizeLookup instance to be used to query number of spans occupied by each item
+     * @param spanSizeLookup instance to be used to query number of spans
+     *            occupied by each item
      */
     public void setSpanSizeLookup(SpanSizeLookup spanSizeLookup) {
         this.mSpanSizeLookup = spanSizeLookup;
     }
+
+    // 处理GridLayoutManager添加头部以及添加底部的错误
     @Override
     public void onAttachedToRecyclerView(final RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -412,13 +426,33 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
             gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    int type = getItemViewType(position-1);
+                    int type = getItemViewType(position - 1);
                     if (mSpanSizeLookup == null)
-                        return (type == VIEW_TYPE.HEADER || type == VIEW_TYPE.FOOTER) ? gridManager.getSpanCount() : 1;
+                        return (type == VIEW_TYPE.HEADER || type == VIEW_TYPE.FOOTER)
+                                ? gridManager.getSpanCount() : 1;
                     else
-                        return (type == VIEW_TYPE.HEADER || type == VIEW_TYPE.FOOTER) ? gridManager.getSpanCount() : mSpanSizeLookup.getSpanSize(gridManager, position - getHeaderViewCount());
+                        return (type == VIEW_TYPE.HEADER || type == VIEW_TYPE.FOOTER)
+                                ? gridManager.getSpanCount()
+                                : mSpanSizeLookup.getSpanSize(gridManager,
+                                        position - getHeaderViewCount());
                 }
             });
+        }
+    }
+
+    // 处理StaggeredGridLayoutManager添加头部以及添加底部的
+    @Override
+    public void onViewAttachedToWindow(BaseViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        super.onViewAttachedToWindow(holder);
+        int type = holder.getItemViewType();
+        if (type == VIEW_TYPE.HEADER || type == VIEW_TYPE.FOOTER) {
+            if (holder.itemView
+                    .getLayoutParams() instanceof StaggeredGridLayoutManager.LayoutParams) {
+                StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) holder.itemView
+                        .getLayoutParams();
+                params.setFullSpan(true);
+            }
         }
     }
 }
