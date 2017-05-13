@@ -153,8 +153,12 @@ public class SuperRecyclerView extends RecyclerView {
 
     @Override
     public void setAdapter(Adapter adapter) {
-        mWrapAdapter = new WrapAdapter(adapter);
-        super.setAdapter(mWrapAdapter);
+        if (adapter instanceof SuperBaseAdapter) {
+            mWrapAdapter = new WrapAdapter(adapter);
+            super.setAdapter(mWrapAdapter);
+        } else {
+            super.setAdapter(adapter);
+        }
         adapter.registerAdapterDataObserver(mDataObserver);
         mDataObserver.onChanged();
     }
@@ -330,7 +334,8 @@ public class SuperRecyclerView extends RecyclerView {
             } else if (viewType == TYPE_LOADMORE_FOOTER) {
                 return new SimpleViewHolder(mLoadMoreFootView);
             }
-            return (BaseViewHolder) adapter.onCreateViewHolder(parent, viewType);
+            return (BaseViewHolder) adapter.onCreateViewHolder(parent,
+                    viewType);
         }
 
         @Override
@@ -480,6 +485,7 @@ public class SuperRecyclerView extends RecyclerView {
                 super(itemView, context);
             }
         }
+
     }
 
     public void setLoadingListener(LoadingListener listener) {

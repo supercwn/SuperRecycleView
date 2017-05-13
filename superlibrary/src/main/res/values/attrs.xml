@@ -40,5 +40,18 @@
         <attr name="anim_duration" format="integer" />
     </declare-styleable>
     <!--end-->
-
+    <!--indexbar-->
+    <declare-styleable name="SuperSideBar">
+        <!--bar的字体大小-->
+        <attr name="super_sidebar_textsize" format="dimension" />
+        <!--bar的背景颜色-->
+        <attr name="super_sidebar_backgrond" format="color" />
+        <!--bar点击后的背景颜色-->
+        <attr name="super_sidebar_backgrond_press" format="color" />
+        <!--bar字体的颜色-->
+        <attr name="super_sidebar_textcolor" format="color" />
+        <!--bar点击后的字体颜色-->
+        <attr name="super_sidebar_textcolor_press" format="color" />
+    </declare-styleable>
+    <!--end-->
 </resources>

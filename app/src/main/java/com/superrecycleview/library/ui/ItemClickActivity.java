@@ -1,3 +1,4 @@
+
 package com.superrecycleview.library.ui;
 
 import android.app.Activity;
@@ -16,9 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
 public class ItemClickActivity extends Activity {
 
@@ -34,7 +34,7 @@ public class ItemClickActivity extends Activity {
         initAdapter();
     }
 
-    private void initView(){
+    private void initView() {
         superRecyclerView = (SuperRecyclerView) findViewById(R.id.super_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -43,17 +43,19 @@ public class ItemClickActivity extends Activity {
         superRecyclerView.setLoadMoreEnabled(false);
     }
 
-    private void initAdapter(){
+    private void initAdapter() {
         dataList = getItemData();
-        mAdapter = new ItemClickAdapter(this,dataList);
+        mAdapter = new ItemClickAdapter(this, dataList);
 
         /**
          * add item click event
          */
         mAdapter.setOnItemClickListener(new SuperBaseAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, Object item, int position) {
-                Toast.makeText(ItemClickActivity.this,"you click item"+position,Toast.LENGTH_SHORT).show();
+            public void onItemClick(View view, int position) {
+                Toast.makeText(ItemClickActivity.this,
+                        (dataList.get(position - 1).getName()) + "you click item" + position,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -62,38 +64,46 @@ public class ItemClickActivity extends Activity {
          */
         mAdapter.setOnItemLongClickListener(new SuperBaseAdapter.OnItemLongClickListener() {
             @Override
-            public void onItemLongClick(View view, Object item, int position) {
-                Toast.makeText(ItemClickActivity.this,"you long click item"+position,Toast.LENGTH_SHORT).show();
+            public void onItemLongClick(View view, int position) {
+                Toast.makeText(ItemClickActivity.this, "you long click item" + position,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
         /**
          * add item child click event
          */
-        mAdapter.setOnItemChildClickListener(new SuperBaseAdapter.OnRecyclerViewItemChildClickListener() {
-            @Override
-            public void onItemChildClick(SuperBaseAdapter adapter, View view, int position) {
-                if(view.getId() == R.id.name_tv){
-                    Toast.makeText(ItemClickActivity.this,"you item child click"+dataList.get(position).getName(),Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        mAdapter.setOnItemChildClickListener(
+                new SuperBaseAdapter.OnRecyclerViewItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(SuperBaseAdapter adapter, View view,
+                            int position) {
+                        if (view.getId() == R.id.name_tv) {
+                            Toast.makeText(ItemClickActivity.this,
+                                    "you item child click" + dataList.get(position - 1).getName(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
         /**
          * add item child long click event
          */
-        mAdapter.setOnItemChildLongClickListener(new SuperBaseAdapter.OnRecyclerViewItemChildLongClickListener() {
-            @Override
-            public boolean onItemChildLongClick(SuperBaseAdapter adapter, View view, int position) {
-                if(view.getId() == R.id.image_iv){
-                    Toast.makeText(ItemClickActivity.this,"you item child long click",Toast.LENGTH_SHORT).show();
-                }
-                return false;
-            }
-        });
+        mAdapter.setOnItemChildLongClickListener(
+                new SuperBaseAdapter.OnRecyclerViewItemChildLongClickListener() {
+                    @Override
+                    public boolean onItemChildLongClick(SuperBaseAdapter adapter, View view,
+                            int position) {
+                        if (view.getId() == R.id.image_iv) {
+                            Toast.makeText(ItemClickActivity.this, "you item child long click",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        return false;
+                    }
+                });
         superRecyclerView.setAdapter(mAdapter);
     }
 
-    //初始化数据
+    // 初始化数据
     public static List<MultipleItemBean> getItemData() {
         List<MultipleItemBean> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {

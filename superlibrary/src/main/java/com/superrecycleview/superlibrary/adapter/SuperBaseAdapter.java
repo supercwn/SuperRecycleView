@@ -165,20 +165,22 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final int position = holder.getAdapterPosition() - getHeaderViewCount() - 1;
-                    mOnItemClickListener.onItemClick(view, mData.get(position), position);
+                    final int position = holder.getAdapterPosition() - getHeaderViewCount();
+                    mOnItemClickListener.onItemClick(view, position);
                 }
             });
         }
 
         if (null != mOnItemLongClickListener) {
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+
                 @Override
                 public boolean onLongClick(View v) {
-                    final int position = holder.getAdapterPosition() - getHeaderViewCount() - 1;
-                    mOnItemLongClickListener.onItemLongClick(v, mData.get(position), position);
+                    final int position = holder.getAdapterPosition() - getHeaderViewCount();
+                    mOnItemLongClickListener.onItemLongClick(v, position);
                     return true;
                 }
+
             });
         }
     }
@@ -228,7 +230,7 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         public void onClick(View v) {
             if (mChildClickListener != null)
                 mChildClickListener.onItemChildClick(SuperBaseAdapter.this, v,
-                        mViewHolder.getLayoutPosition() - getHeaderViewCount() - 1);
+                        mViewHolder.getLayoutPosition() - getHeaderViewCount());
         }
     }
 
@@ -251,7 +253,7 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
         public boolean onLongClick(View v) {
             if (mChildLongClickListener != null) {
                 return mChildLongClickListener.onItemChildLongClick(SuperBaseAdapter.this, v,
-                        mViewHolder.getLayoutPosition() - getHeaderViewCount() - 1);
+                        mViewHolder.getLayoutPosition() - getHeaderViewCount());
             }
             return false;
         }
@@ -382,12 +384,12 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
     /**
      * Some interface
      */
-    public interface OnItemClickListener<T> {
-        void onItemClick(View view, T item, int position);
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 
-    public interface OnItemLongClickListener<T> {
-        void onItemLongClick(View view, T item, int position);
+    public interface OnItemLongClickListener {
+        void onItemLongClick(View view, int position);
     }
 
     public interface OnRecyclerViewItemChildClickListener {
@@ -454,5 +456,24 @@ public abstract class SuperBaseAdapter<T> extends RecyclerView.Adapter<BaseViewH
                 params.setFullSpan(true);
             }
         }
+    }
+
+    /**
+     * * 刷新数据，初始化数据
+     */
+    public void setDatas(List<T> list) {
+        if (this.mData != null) {
+            if (null != list) {
+                List<T> temp = new ArrayList<>();
+                temp.addAll(list);
+                this.mData.clear();
+                this.mData.addAll(temp);
+            } else {
+                this.mData.clear();
+            }
+        } else {
+            this.mData = list;
+        }
+        notifyDataSetChanged();
     }
 }

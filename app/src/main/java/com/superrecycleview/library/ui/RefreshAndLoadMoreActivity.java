@@ -1,3 +1,4 @@
+
 package com.superrecycleview.library.ui;
 
 import android.os.Bundle;
@@ -14,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
-public class RefreshAndLoadMoreActivity extends AppCompatActivity implements SuperRecyclerView.LoadingListener {
+public class RefreshAndLoadMoreActivity extends AppCompatActivity
+        implements SuperRecyclerView.LoadingListener {
 
     private SuperRecyclerView superRecyclerView;
     private RefreshAndLoadMoreAdapter mAdapter;
@@ -39,13 +40,14 @@ public class RefreshAndLoadMoreActivity extends AppCompatActivity implements Sup
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superRecyclerView.setLayoutManager(layoutManager);
-        superRecyclerView.setRefreshEnabled(true);//可以定制是否开启下拉刷新
-        superRecyclerView.setLoadMoreEnabled(true);//可以定制是否开启加载更多
-        superRecyclerView.setLoadingListener(this);//下拉刷新，上拉加载的监听
-        superRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);//下拉刷新的样式
-        superRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate);//上拉加载的样式
-        superRecyclerView.setArrowImageView(R.mipmap.iconfont_downgrey);//设置下拉箭头
+        superRecyclerView.setRefreshEnabled(true);// 可以定制是否开启下拉刷新
+        superRecyclerView.setLoadMoreEnabled(true);// 可以定制是否开启加载更多
+        superRecyclerView.setLoadingListener(this);// 下拉刷新，上拉加载的监听
+        superRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);// 下拉刷新的样式
+        superRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate);// 上拉加载的样式
+        superRecyclerView.setArrowImageView(R.mipmap.iconfont_downgrey);// 设置下拉箭头
     }
+
     private List<String> initData(int size) {
         dataList.clear();
         for (int i = 1; i <= size; i++) {
@@ -54,7 +56,7 @@ public class RefreshAndLoadMoreActivity extends AppCompatActivity implements Sup
         return dataList;
     }
 
-    //模拟加载更多的数据
+    // 模拟加载更多的数据
     private List<String> getDataList(int size) {
         List<String> data = new ArrayList<>();
         for (int i = 1; i <= size; i++) {
@@ -63,9 +65,8 @@ public class RefreshAndLoadMoreActivity extends AppCompatActivity implements Sup
         return data;
     }
 
-
     private void initAdapter() {
-        mAdapter = new RefreshAndLoadMoreAdapter(this,dataList);
+        mAdapter = new RefreshAndLoadMoreAdapter(this, dataList);
         superRecyclerView.setAdapter(mAdapter);
     }
 
@@ -83,7 +84,7 @@ public class RefreshAndLoadMoreActivity extends AppCompatActivity implements Sup
 
     @Override
     public void onLoadMore() {
-        if(dataList.size() >= 50){
+        if (dataList.size() >= 50) {
             superRecyclerView.setNoMore(true);
             return;
         }

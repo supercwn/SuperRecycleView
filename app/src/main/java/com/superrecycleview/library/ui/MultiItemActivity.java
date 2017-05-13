@@ -1,3 +1,4 @@
+
 package com.superrecycleview.library.ui;
 
 import android.app.Activity;
@@ -17,14 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
-public class MultiItemActivity extends Activity implements SuperRecyclerView.LoadingListener, SuperBaseAdapter.OnItemClickListener {
+public class MultiItemActivity extends Activity
+        implements SuperRecyclerView.LoadingListener, SuperBaseAdapter.OnItemClickListener {
 
     private SuperRecyclerView superRecyclerView;
     private MultiItemAdapter mAdapter;
+    private List<MultipleItemBean> mDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +47,13 @@ public class MultiItemActivity extends Activity implements SuperRecyclerView.Loa
     }
 
     private void initAdapter() {
-        mAdapter = new MultiItemAdapter(this, getMultipleItemData());
+        mDatas = getMultipleItemData();
+        mAdapter = new MultiItemAdapter(this, mDatas);
         mAdapter.setOnItemClickListener(this);
         superRecyclerView.setAdapter(mAdapter);
     }
 
-    //初始化数据
+    // 初始化数据
     public static List<MultipleItemBean> getMultipleItemData() {
         List<MultipleItemBean> list = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
@@ -88,12 +91,14 @@ public class MultiItemActivity extends Activity implements SuperRecyclerView.Loa
     }
 
     @Override
-    public void onItemClick(View view, Object item, int position) {
-        MultipleItemBean multipleItemBean = (MultipleItemBean) item;
+    public void onItemClick(View view, int position) {
+        MultipleItemBean multipleItemBean = mDatas.get(position - 1);
         if (multipleItemBean.getType() == 0) {
-            Toast.makeText(this,"name:"+ multipleItemBean.getName(),Toast.LENGTH_SHORT).show();
-        } else if((multipleItemBean.getType() == 1)) {
-            Toast.makeText(this,"name:"+ multipleItemBean.getName()+"info:"+multipleItemBean.getInfo(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "name:" + multipleItemBean.getName(), Toast.LENGTH_SHORT).show();
+        } else if ((multipleItemBean.getType() == 1)) {
+            Toast.makeText(this,
+                    "name:" + multipleItemBean.getName() + "info:" + multipleItemBean.getInfo(),
+                    Toast.LENGTH_SHORT).show();
         } else {
             return;
         }

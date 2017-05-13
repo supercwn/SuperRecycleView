@@ -47,9 +47,25 @@
         <activity
             android:name=".ui.DragActivity"
             android:screenOrientation="portrait" />
-        
+
         <activity
             android:name=".ui.LayoutManagerActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sidebar.WeChatActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.SideBarActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sidebar.SlideSwipeActivity"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name=".ui.sidebar.MeiTuanActivity"
             android:screenOrientation="portrait" />
     </application>
 

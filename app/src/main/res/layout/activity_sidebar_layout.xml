@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/super_tv_wechat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="高仿微信"
+        android:textColor="@color/colorWrite" />
+
+    <TextView
+        android:id="@+id/super_tv_swipe_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="搭配侧滑菜单"
+        android:textColor="@color/colorWrite" />
+
+    <TextView
+        android:id="@+id/super_tv_meituan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="高仿美团城市选择"
+        android:textColor="@color/colorWrite" />
+
+</LinearLayout>

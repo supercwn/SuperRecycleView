@@ -1,3 +1,4 @@
+
 package com.superrecycleview.library.ui;
 
 import android.app.Activity;
@@ -17,11 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
-public class SwipeMenuActivity extends Activity implements SuperRecyclerView.LoadingListener, SuperBaseAdapter.OnItemClickListener {
+public class SwipeMenuActivity extends Activity
+        implements SuperRecyclerView.LoadingListener, SuperBaseAdapter.OnItemClickListener {
 
     private SuperSwipeMenuRecyclerView superSwipeMenuRecyclerView;
     private SwipeMenuAdapter swipeMenuAdapter;
@@ -36,48 +37,57 @@ public class SwipeMenuActivity extends Activity implements SuperRecyclerView.Loa
         initAdapter();
     }
 
-    private void initView(){
-        superSwipeMenuRecyclerView = (SuperSwipeMenuRecyclerView) findViewById(R.id.super_swipemenu_recycle_view);
+    private void initView() {
+        superSwipeMenuRecyclerView = (SuperSwipeMenuRecyclerView) findViewById(
+                R.id.super_swipemenu_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         superSwipeMenuRecyclerView.setLayoutManager(layoutManager);
         superSwipeMenuRecyclerView.setRefreshEnabled(true);
         superSwipeMenuRecyclerView.setLoadMoreEnabled(true);
         superSwipeMenuRecyclerView.setLoadingListener(this);
-        superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);//左滑（默认）
+        superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);// 左滑（默认）
         // superSwipeMenuRecyclerView.setSwipeDirection(SuperSwipeMenuRecyclerView.DIRECTION_LEFT);//右滑
     }
-    private void initAdapter(){
-        swipeMenuAdapter = new SwipeMenuAdapter(this,dataList);
+
+    private void initAdapter() {
+        swipeMenuAdapter = new SwipeMenuAdapter(this, dataList);
         swipeMenuAdapter.setOnItemClickListener(this);
-        swipeMenuAdapter.setOnItemChildClickListener(new SuperBaseAdapter.OnRecyclerViewItemChildClickListener() {
-            @Override
-            public void onItemChildClick(SuperBaseAdapter adapter, View view, int position) {
-                switch (view.getId()){
-                    case R.id.btOpen:
-                        Toast.makeText(SwipeMenuActivity.this,"show open",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.btDelete:
-                        Toast.makeText(SwipeMenuActivity.this,"show delete",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.btFavorite:
-                        Toast.makeText(SwipeMenuActivity.this,"show Favorite",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.btGood:
-                        Toast.makeText(SwipeMenuActivity.this,"show good",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.image_iv:
-                        Toast.makeText(SwipeMenuActivity.this,"show image",Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        });
+        swipeMenuAdapter.setOnItemChildClickListener(
+                new SuperBaseAdapter.OnRecyclerViewItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(SuperBaseAdapter adapter, View view,
+                            int position) {
+                        switch (view.getId()) {
+                            case R.id.btOpen:
+                                Toast.makeText(SwipeMenuActivity.this, "show open",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.btDelete:
+                                Toast.makeText(SwipeMenuActivity.this, "show delete",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.btFavorite:
+                                Toast.makeText(SwipeMenuActivity.this, "show Favorite",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.btGood:
+                                Toast.makeText(SwipeMenuActivity.this, "show good",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.image_iv:
+                                Toast.makeText(SwipeMenuActivity.this, "show image",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                    }
+                });
         superSwipeMenuRecyclerView.setAdapter(swipeMenuAdapter);
     }
 
-    private void initData(){
-        for (int i = 0 ; i < 20 ; i++){
-            dataList.add("Conetnt"+(i+1));
+    private void initData() {
+        for (int i = 0; i < 20; i++) {
+            dataList.add("Conetnt" + (i + 1));
         }
     }
 
@@ -88,7 +98,7 @@ public class SwipeMenuActivity extends Activity implements SuperRecyclerView.Loa
             public void run() {
                 superSwipeMenuRecyclerView.completeRefresh();
             }
-        },2000);
+        }, 2000);
     }
 
     @Override
@@ -98,11 +108,11 @@ public class SwipeMenuActivity extends Activity implements SuperRecyclerView.Loa
             public void run() {
                 superSwipeMenuRecyclerView.completeLoadMore();
             }
-        },2000);
+        }, 2000);
     }
 
     @Override
-    public void onItemClick(View view, Object item, int position) {
-        Toast.makeText(this,dataList.get(position),Toast.LENGTH_SHORT).show();
+    public void onItemClick(View view, int position) {
+        Toast.makeText(this, dataList.get(position - 1), Toast.LENGTH_SHORT).show();
     }
 }

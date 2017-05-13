@@ -16,6 +16,7 @@ import com.superrecycleview.library.ui.ItemClickActivity;
 import com.superrecycleview.library.ui.LayoutManagerActivity;
 import com.superrecycleview.library.ui.MultiItemActivity;
 import com.superrecycleview.library.ui.RefreshAndLoadMoreActivity;
+import com.superrecycleview.library.ui.SideBarActivity;
 import com.superrecycleview.library.ui.SwipeMenuActivity;
 import com.superrecycleview.superlibrary.adapter.SuperBaseAdapter;
 import com.superrecycleview.superlibrary.recycleview.SuperRecyclerView;
@@ -33,13 +34,13 @@ public class MainActivity extends AppCompatActivity
     private static final String[] titles = {
             "AnimationActivity", "HeaderViewAndFooterView", "RefreshAndLoadMoreActivity",
             "Gradual change", "MultiItemActivity", "ItemClickActivity", "SwipeMenuActivity",
-            "DragActivity", "LayoutManagerActivity"
+            "DragActivity", "LayoutManagerActivity", "SideBarActivity"
     };
     private static final Class<?>[] ACTIVITY = {
             AnimationActivity.class, HeaderAndFooterActivity.class,
             RefreshAndLoadMoreActivity.class, GradualChangeActivity.class, MultiItemActivity.class,
             ItemClickActivity.class, SwipeMenuActivity.class, DragActivity.class,
-            LayoutManagerActivity.class
+            LayoutManagerActivity.class, SideBarActivity.class
     };
     private List<String> dataList = new ArrayList<>();
 
@@ -78,8 +79,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onItemClick(View view, Object item, int position) {
-        Intent intent = new Intent(this, ACTIVITY[position]);
+    public void onItemClick(View view, int position) {
+        Intent intent = new Intent(this, ACTIVITY[position - 1]);
         startActivity(intent);
     }
 }

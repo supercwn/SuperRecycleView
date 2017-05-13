@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.superrecycleview.superlibrary.recycleview.swipemenu.SuperSwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/smContentView"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <ImageView
+            android:id="@+id/super_iv_avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/super_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="安徽" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/smMenuView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDel"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:background="#ecd50a"
+            android:padding="20dp"
+            android:text="删除"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</com.superrecycleview.superlibrary.recycleview.swipemenu.SuperSwipeMenuLayout>

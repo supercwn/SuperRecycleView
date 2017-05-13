@@ -1,3 +1,4 @@
+
 package com.superrecycleview.library.ui;
 
 import android.app.Activity;
@@ -21,9 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by super南仔 on 07/28/16.
- * blog: http://supercwn.github.io/
- * GitHub: https://github.com/supercwn
+ * Created by super南仔 on 07/28/16. blog: http://supercwn.github.io/ GitHub:
+ * https://github.com/supercwn
  */
 public class GradualChangeActivity extends Activity implements SuperRecyclerView.LoadingListener {
 
@@ -49,7 +49,7 @@ public class GradualChangeActivity extends Activity implements SuperRecyclerView
         initAdapter();
     }
 
-    private void initView(){
+    private void initView() {
         superRecyclerView = (SuperRecyclerView) findViewById(R.id.rv_list);
         rlBar = (RelativeLayout) findViewById(R.id.rl_bar);
         viewTitleBg = findViewById(R.id.view_title_bg);
@@ -71,10 +71,13 @@ public class GradualChangeActivity extends Activity implements SuperRecyclerView
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (isScrollIdle && adViewTopSpace < 0) return;
-                adViewTopSpace = DensityUtil.px2dip(GradualChangeActivity.this, mAdapter.getHeaderLayout().getTop());
-                adViewHeight = DensityUtil.px2dip(GradualChangeActivity.this, mAdapter.getHeaderLayout().getHeight());
-                if(-adViewTopSpace<=50){
+                if (isScrollIdle && adViewTopSpace < 0)
+                    return;
+                adViewTopSpace = DensityUtil.px2dip(GradualChangeActivity.this,
+                        mAdapter.getHeaderLayout().getTop());
+                adViewHeight = DensityUtil.px2dip(GradualChangeActivity.this,
+                        mAdapter.getHeaderLayout().getHeight());
+                if (-adViewTopSpace <= 50) {
                     tv_title.setVisibility(View.GONE);
                 } else {
                     tv_title.setVisibility(View.VISIBLE);
@@ -84,23 +87,23 @@ public class GradualChangeActivity extends Activity implements SuperRecyclerView
         });
     }
 
-    private void initData(){
-        for (int i = 1 ; i<= 30;i++){
-            dataList.add("Super"+i);
+    private void initData() {
+        for (int i = 1; i <= 30; i++) {
+            dataList.add("Super" + i);
         }
     }
 
-    private void initAdapter(){
-        mAdapter = new RefreshAndLoadMoreAdapter(this,dataList);
+    private void initAdapter() {
+        mAdapter = new RefreshAndLoadMoreAdapter(this, dataList);
         addHeadView();
         superRecyclerView.setAdapter(mAdapter);
     }
 
     private void addHeadView() {
-        View headView = getLayoutInflater().inflate(R.layout.activity_ad_header_layout, (ViewGroup) superRecyclerView.getParent(), false);
+        View headView = getLayoutInflater().inflate(R.layout.activity_ad_header_layout,
+                (ViewGroup) superRecyclerView.getParent(), false);
         mAdapter.addHeaderView(headView);
     }
-
 
     // 处理标题栏颜色渐变
     private void handleTitleBarColorEvaluate() {
@@ -108,14 +111,17 @@ public class GradualChangeActivity extends Activity implements SuperRecyclerView
         rlBar.setAlpha(1f);
         if (adViewTopSpace > 5) {
             fraction = 1f - adViewTopSpace * 1f / 60;
-            if (fraction < 0f) fraction = 0f;
+            if (fraction < 0f)
+                fraction = 0f;
             rlBar.setAlpha(fraction);
-            return ;
+            return;
         }
         float space = Math.abs(adViewTopSpace) * 1f;
         fraction = space / (adViewHeight - titleViewHeight);
-        if (fraction < 0f) fraction = 0f;
-        if (fraction > 1f) fraction = 1f;
+        if (fraction < 0f)
+            fraction = 0f;
+        if (fraction > 1f)
+            fraction = 1f;
         rlBar.setAlpha(1f);
         if (fraction >= 1f) {
             viewTitleBg.setAlpha(0f);
@@ -124,7 +130,8 @@ public class GradualChangeActivity extends Activity implements SuperRecyclerView
         } else {
             viewTitleBg.setAlpha(1f - fraction);
             viewActionMoreBg.setAlpha(1f - fraction);
-            rlBar.setBackgroundColor(ColorUtil.getNewColorByStartEndColor(this, fraction, R.color.transparent, R.color.orange));
+            rlBar.setBackgroundColor(ColorUtil.getNewColorByStartEndColor(this, fraction,
+                    R.color.transparent, R.color.orange));
         }
     }
 

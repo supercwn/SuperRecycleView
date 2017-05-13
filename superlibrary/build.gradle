@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.2.3"
+version = "1.2.5"
 group = "com.supercwn.superrecycleview"
 
 def siteUrl = 'https://github.com/supercwn/SuperRecycleView'    // project homepage
@@ -30,6 +30,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.0'
+    compile 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
     compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
 }
@@ -40,8 +41,9 @@ install {
         pom {
             project {
                 packaging 'aar'
+                // 项目描述
                 name 'a RecyclerView that implements refresh and loadmore featrues,and you can extends SuperBaseAdapter<T>,you can easy cover data'
-                // #CONFIG# // project title
+                // CONFIG // project title
                 url siteUrl
                 // Set your license
                 licenses {
@@ -86,7 +88,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    // archives javadocJar
+    archives javadocJar
     archives sourcesJar
 }
 
